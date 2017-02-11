@@ -115,7 +115,7 @@ lunr.unicodeNormalizer = function(str) {
  * @param {String} obj The string to convert into tokens
  * @returns {Array}
  */
-lunr.tokenizer = function(obj) {
+ var tokenizer = function(obj) {
   if (!arguments.length || obj === null || obj === undefined) return [];
   if (Array.isArray(obj)) {
     return obj.map(function(t) {
@@ -141,4 +141,9 @@ lunr.tokenizer = function(obj) {
     });
 };
 
+for(var attr in lunr.tokenizer){
+    tokenizer[attr] = lunr.tokenizer[attr];
+}
+
+lunr.tokenizer = tokenizer;
 })(lunr);
